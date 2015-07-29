@@ -15,7 +15,7 @@ public class Main {
 	public static void getRequest() {
 		try {
 			Client client = Client.create();
-			WebResource webResource = client.resource("http://localhost:8080/contextpro/rest/sensordatareceiver/gobi");
+			WebResource webResource = client.resource("http://localhost:8080/contra/sensordatareceiver/save");
 			ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
 			if (response.getStatus() != 200) {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
@@ -52,8 +52,7 @@ public class Main {
 		try {
 
 			Client client = Client.create();
-			WebResource webResource = client.resource("http://localhost:8080/contextpro/rest/sensordatareceiver/save");
-			String input = "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}";
+			WebResource webResource = client.resource("http://localhost:8080/ConTra/sensordatareceiver/save");
 			ClientResponse response = webResource.type("application/json").post(ClientResponse.class, sensorResponse);
 			if (response.getStatus() != 201) {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
